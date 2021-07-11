@@ -1,8 +1,9 @@
 const express = require("express");
-const mysql = require("mysql");
 const path = require("path");
 
-const userRoutes = require("./routes/user");
+//const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
+//const postRoutes = require("./routes/post");
 
 const app = express();
 
@@ -20,8 +21,16 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use("/api/auth", userRoutes);
+/*const db = require("./models");
+db.sequelize.sync();*/
+
+//app.use("/api/users", userRoutes);
+//app.use("/api/posts", postRoutes);
+app.use("/api/auth", authRoutes);
 
 app.use("/images", express.static(path.join(__dirname, "images")));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 module.exports = app;
