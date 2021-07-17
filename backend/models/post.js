@@ -8,15 +8,34 @@ module.exports = (sequelize, DataTypes) => {
                     allowNull: false,
                 },
             });
+            models.Post.hasMany(models.Comment, {
+                onDelete: "cascade",
+            });
         }
     }
     Post.init(
         {
-            userId: DataTypes.INTEGER,
-            title: DataTypes.STRING,
-            content: DataTypes.TEXT,
-            articleUrl: DataTypes.STRING,
+            userId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                references: {
+                    model: "Users",
+                    key: "id",
+                },
+            },
+            title: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            content: {
+                type: DataTypes.TEXT,
+                allowNull: false,
+            },
+            articleUrl: {
+                type: DataTypes.STRING,
+            },
         },
+
         {
             sequelize,
             modelName: "Post",

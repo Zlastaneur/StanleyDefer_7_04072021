@@ -4,6 +4,7 @@ const path = require("path");
 const userRoutes = require("./routes/user");
 const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/post");
+const commentRoutes = require("./routes/comment");
 
 const app = express();
 
@@ -27,6 +28,7 @@ db.sequelize.sync();
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/comments", commentRoutes);
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 

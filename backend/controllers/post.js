@@ -1,9 +1,14 @@
 const models = require("../models");
 const Post = models.posts;
+const jwt = require("jsonwebtoken");
 
 exports.createPost = (req, res, next) => {
     const title = req.body.title;
     const content = req.body.content;
+
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, process.env.JWT_TOKEN);
+    const userId = decodedToken.userId;
 
     if (title === null || title === "" || content === null || content === "") {
         return res.status(400).json({ error: "Missing title or content" });
@@ -12,6 +17,7 @@ exports.createPost = (req, res, next) => {
     const postObject = req.body;
     const post = new Post({
         ...postObject,
+        userId,
     });
     post.save()
         .then(() => res.status(201).json({ message: "Post created !" }))
