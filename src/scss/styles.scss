@@ -1,0 +1,34 @@
+@import "./_mixins.scss";
+@import "./_variables.scss";
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+*,
+*:focus,
+*:hover {
+    outline: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    object-fit: contain;
+}
+
+#root {
+    @include pushToBottom;
+}

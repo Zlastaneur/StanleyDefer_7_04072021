@@ -3,7 +3,7 @@ const Comment = models.comments;
 
 exports.createComment = (req, res, next) => {
     const commentObject = req.body;
-    const comment = new comment({
+    const comment = new Comment({
         ...commentObject,
     });
     comment
