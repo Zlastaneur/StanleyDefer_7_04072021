@@ -1,0 +1,92 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    color: black;
+
+    .title {
+        @include flex;
+        @include shadow;
+        max-width: 1200px;
+        min-height: 100px;
+        justify-content: center;
+        align-items: center;
+        margin: 50px auto 20px auto;
+        border-radius: 5px;
+    }
+
+    .newPost {
+        display: flex;
+        max-width: 1200px;
+        min-height: 50px;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0px auto 60px auto;
+        border-radius: 5px;
+
+        .btn {
+            @include btn;
+        }
+    }
+
+    .postCard {
+        @include flex;
+        @include shadow;
+        flex-wrap: wrap;
+        max-width: 800px;
+        max-height: 450px;
+        padding: 20px;
+        margin-bottom: 80px;
+
+        .user {
+            display: flex;
+            align-items: center;
+            flex-flow: column nowrap;
+            width: 100%;
+            max-width: 120px;
+            margin-right: 20px;
+            text-align: center;
+
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+            }
+
+            .name {
+                color: black;
+            }
+        }
+
+        .content {
+            max-width: 620px;
+            padding-bottom: 30px;
+
+            .postTitle {
+                font-size: 1.5em;
+            }
+
+            .text {
+                margin-top: 40px;
+                margin-bottom: 30px;
+            }
+
+            .articleUrl {
+                color: $primary-color;
+                margin-bottom: 20px;
+            }
+        }
+
+        .timestamp {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            width: 100%;
+            color: grey;
+
+            #createdAt {
+                margin: 0px;
+            }
+        }
+    }
+}

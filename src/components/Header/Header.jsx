@@ -4,24 +4,47 @@ import { Link } from "react-router-dom";
 import smallIcon from "../../images/icon-white.png";
 import longIcon from "../../images/icon-left-white.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserPlus, faSignInAlt } from '@fortawesome/free-solid-svg-icons'
+import { faUserPlus, faSignInAlt, faHome, faUserFriends, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import Cookies from "js-cookie"
 
 export default function Header(){
  
     const signupIcon = <FontAwesomeIcon icon={faUserPlus} size="2x" color="white"/>
     const loginIcon = <FontAwesomeIcon icon={faSignInAlt} size="2x" color="white"/>
+    const postsIcon = <FontAwesomeIcon icon={faHome} size="2x" color="white"/>
+    const employeeIcon = <FontAwesomeIcon icon={faUserFriends} size="2x" color="white"/>
+    const profilIcon = <FontAwesomeIcon icon={faUserCircle} size="2x" color="white"/>
 
-    const [auth] = React.useState(false);
+
+    const [auth, setAuth] = React.useState(false);
+
+
+
+     // Cookies
+        const readCookie = () => {
+        const user = Cookies.get("user");
+        if(user) {
+            setAuth(true);
+        }
+    }
+
+    React.useEffect(() => {
+        readCookie();
+    }, [])
+
 
   let navLink;
+
+  console.log(auth);
+
   if (auth === true) {
       const userLog = JSON.parse(localStorage.getItem('userConnect'));
       const userId = userLog.userId;
 
       navLink = <>
-              <nav className="nav">
-                  <Link to="/posts" className="posts">Fil d'actualité</Link>
-                  <Link to={"/user/" + userId } className="user">Mon compte</Link>
+              <nav className={styles.nav}>
+                  <Link to="/posts" className={styles.posts}>{postsIcon}</Link>
+                  <Link to={"/user/" + userId } className={styles.user}>{profilIcon}</Link>
               </nav>
             </>
   } else {

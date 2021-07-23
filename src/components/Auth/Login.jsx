@@ -1,6 +1,7 @@
 import React, {useState, useCallback, useContext, useMemo, createContext} from 'react';
 import AuthContext from '../AuthContext'
 import styles from "./Login.module.scss"
+import Cookies from "js-cookie"
 
 
 const FormContext = createContext({})
@@ -69,7 +70,7 @@ function Login () {
                     alert("Utilisateur non identifié. Réessayez !")
                 } else {
                     Auth.setAuth(true)
-                    alert("Content de vous revoir !")
+                    Cookies.set("user", "loginTrue")
                 }
             },
             (error) => {
