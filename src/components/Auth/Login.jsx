@@ -24,7 +24,7 @@ function FormWithContext ({defaultValue, onSubmit, children}) {
     }, [onSubmit, value])
 
     return <FormContext.Provider value={value}>
-        <form className={styles.field} onSubmit={handleSubmit}>
+        <form className={`${styles.field} ${styles.form}`} onSubmit={handleSubmit}>
             {children}
         </form>
     </FormContext.Provider>

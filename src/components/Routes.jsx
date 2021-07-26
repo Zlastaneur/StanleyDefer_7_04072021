@@ -8,9 +8,11 @@ import Signup from './Auth/Signup';
 import Login from './Auth/Login';
 import Posts from './Posts/Posts';
 import Home from './Home/Home';
+import User from './Users/User';
+import OtherUser from './Users/OtherUser';
+import CreatePost from './Posts/CreatePost';
 
 const Routes = () => {
-    
     const Auth = React.useContext(AuthContext)
 
     return (
@@ -19,6 +21,9 @@ const Routes = () => {
             <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/posts" auth={Auth.auth} component={Posts} />
+            <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
+            <Route path="/users/:id" auth={Auth.auth} component={OtherUser} />
+            <Route path="/createpost" auth={Auth.auth} component={CreatePost} />
         </Switch>
     )
 }

@@ -6,8 +6,10 @@ import longIcon from "../../images/icon-left-white.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus, faSignInAlt, faHome, faUserFriends, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import Cookies from "js-cookie"
+import AuthContext from '../AuthContext';
 
-export default function Header(){
+
+const Header = () => {
  
     const signupIcon = <FontAwesomeIcon icon={faUserPlus} size="2x" color="white"/>
     const loginIcon = <FontAwesomeIcon icon={faSignInAlt} size="2x" color="white"/>
@@ -16,50 +18,70 @@ export default function Header(){
     const profilIcon = <FontAwesomeIcon icon={faUserCircle} size="2x" color="white"/>
 
 
-    const [auth, setAuth] = React.useState(false);
+    //const [auth, setAuth] = React.useState(false);
 
-
+    const Auth = React.useContext(AuthContext)
 
      // Cookies
-        const readCookie = () => {
+       const readCookie = () => {
         const user = Cookies.get("user");
         if(user) {
-            setAuth(true);
+            Auth.setAuth(true);
         }
     }
 
     React.useEffect(() => {
         readCookie();
-    }, [])
+    },)
 
 
   let navLink;
+  let header
 
-  console.log(auth);
-
-  if (auth === true) {
+  if (Auth.auth === true) {
       const userLog = JSON.parse(localStorage.getItem('userConnect'));
       const userId = userLog.userId;
 
-      navLink = <>
-              <nav className={styles.nav}>
-                  <Link to="/posts" className={styles.posts}>{postsIcon}</Link>
-                  <Link to={"/user/" + userId } className={styles.user}>{profilIcon}</Link>
-              </nav>
-            </>
-  } else {
       navLink = 
-      <nav className={styles.nav}>
-              <Link to="/signup" className={styles.signup}>{signupIcon}</Link>
-              <Link to="/login" className={styles.login}>{loginIcon}</Link>
-          </nav>
-  }
+        <nav className={styles.nav}>
+            <Link to="/posts" className={styles.posts}>{postsIcon}</Link>
+            <Link to={"/user/" + userId } className={styles.user}>{profilIcon}</Link>
+        </nav>
 
-    return (
+      header = 
+        <header className={styles.header}>
+           <Link to="/posts" className={styles.logo}><img src={longIcon} alt="logo" className={styles.longIcon}/>
+           <img src={smallIcon} alt="logo" className={styles.smallIcon}/></Link>
+           {navLink}
+        </header>
+    
+
+     
+            
+  } else {
+
+    navLink = 
+        <nav className={styles.nav}>
+            <Link to="/signup" className={styles.signup}>{signupIcon}</Link>
+            <Link to="/login" className={styles.login}>{loginIcon}</Link>
+        </nav>
+
+    header = 
         <header className={styles.header}>
            <Link to="/" className={styles.logo}><img src={longIcon} alt="logo" className={styles.longIcon}/>
            <img src={smallIcon} alt="logo" className={styles.smallIcon}/></Link>
-            {navLink}
+           {navLink}
         </header>
+
+
+    
+  }
+
+    return (
+    <>
+        {header}
+    </>
     )
 }
+
+export default Header;

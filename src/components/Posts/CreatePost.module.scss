@@ -1,0 +1,49 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    @include flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+
+    .title {
+        @include shadow;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .form {
+        @include shadow;
+        width: 100%;
+        padding: 40px;
+
+        :focus {
+            box-shadow: none !important;
+            border-color: grey !important;
+        }
+        .group {
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+
+            .btn {
+                @include btn;
+                max-width: 75px;
+                font-size: 1em;
+                margin: 0 20px;
+            }
+        }
+    }
+}

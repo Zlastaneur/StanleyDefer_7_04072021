@@ -13,6 +13,7 @@ const Posts = () => {
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     let token = "Bearer " + storage.token;
+    const userId = storage.userId
 
     useEffect(() => {
       fetch("http://localhost:8080/api/posts", 
@@ -50,6 +51,10 @@ const Posts = () => {
             )
         }, [token])
 
+           /* if (userId !== post.userId && user.imageUrl){
+                return <div></div>
+            }*/
+
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -65,19 +70,26 @@ const Posts = () => {
                     {posts.map((post) => (
                         <div className={styles.postCard} key={"postCard" + post.id}>
                             <div className={styles.user}>
-                                {users.map((user) => {
-                                        if (user.id === post.userId && user.imageUrl) {
+
+                            {users.map((user) => {
+                                        if (user.id === post.userId && user.imageUrl && user.id !== userId) {
                                         return <Link to={"/users/" + user.id} key={user.id + post.id}><img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + post.id} /></Link>
-                                        } else if (user.id === post.userId && !user.imageUrl) {
-                                            return <img src={img} alt="user" key={"userImage" + post.id} />
-                                        } else {
+                                        } else if (user.id === post.userId && user.imageUrl && user.id === userId) {
+                                            return <Link to={"/user/" + user.id} key={user.id + post.id}><img src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + post.id} /></Link>
+                                        }
+                                        else if (user.id === post.userId && !user.imageUrl && user.id !== userId ) {
+                                            return <Link to={"/users/" + user.id} key={user.id + post.id}><img src={img} alt="user" key={"userImage" + post.id} /></Link>
+                                        } else if (user.id === post.userId && !user.imageUrl && user.id === userId) {
+                                            return <Link to={"/user/" + user.id} key={user.id + post.id}><img src={img} alt="user" key={"userImage" + post.id} /></Link>
+                                        } 
+                                        else {
                                             return null
                                         }
                                 })}
 
                                 {users.map((user) => {
                                     if(user.id === post.userId){
-                                        return <h2 key={"h2" +user.id}><Link to={"/users/" + user.id} key={user.id + post.id} className={styles.name}>{user.firstname} {user.lastname}</Link></h2>
+                                        return <h2 key={"h2" +user.id} className={styles.name}>{user.firstname}<br></br>{user.lastname}</h2>
                                     } else {
                                         return null
                                     }

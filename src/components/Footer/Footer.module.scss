@@ -5,4 +5,10 @@
     background-color: rgb(230, 230, 230);
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 50px;
+
+    .copyright {
+        margin-bottom: 0;
+    }
 }
