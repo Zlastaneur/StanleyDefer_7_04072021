@@ -33,7 +33,7 @@ exports.modifyUser = (req, res, next) => {
 
     const userObject = req.file
         ? {
-              ...req.body.sauce,
+              ...req.body.user,
               imageUrl: req.file.filename,
           }
         : { ...req.body };

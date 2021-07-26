@@ -15,12 +15,14 @@
         width: 100%;
         padding: 20px;
         text-align: center;
+        border-radius: 5px;
     }
 
     .form {
         @include shadow;
         width: 100%;
         padding: 40px;
+        border-radius: 5px;
 
         :focus {
             box-shadow: none !important;

@@ -109,7 +109,7 @@ const User = () => {
 
                             />
                             }
-                                <button className={styles.btn} onClick={() => {history.push("/imageupdate/" + userId)}}>{modifyImgIcon}</button>
+                                <button className={styles.btn} onClick={() => {history.push("/updatephoto/" + userId)}}>{modifyImgIcon}</button>
                         </div>
                     </div>
                     <div className={styles.info}>

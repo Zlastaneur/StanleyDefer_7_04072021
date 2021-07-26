@@ -1,0 +1,58 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    @include flex;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    align-items: center;
+
+    .title {
+        @include flex;
+        @include shadow;
+        justify-content: center;
+        width: 100%;
+        padding: 20px 40px;
+        margin-bottom: 40px;
+        border-radius: 5px;
+    }
+
+    .updatePhoto {
+        @include shadow;
+        max-width: 800px;
+        width: 100%;
+        padding: 40px;
+        border-radius: 5px;
+
+        .form {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+
+            .input {
+                border: 1px solid rgb(212, 212, 212);
+                padding: 5px 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+        }
+        .submit,
+        .back {
+            @include btn;
+            justify-content: center;
+            max-width: 100px;
+            padding: 10px 15px;
+            font-size: 1.1em;
+        }
+
+        .cancel {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .back {
+        }
+    }
+}
