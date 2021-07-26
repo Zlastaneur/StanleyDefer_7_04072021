@@ -1,25 +1,24 @@
 import * as React from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import FormField from '../FormField';
-import styles from "./CreatePost.module.scss"
 import Form from 'react-bootstrap/Form'
+import styles from "./UpdateAccount.module.scss"
 
-
-class CreateArticle extends React.Component {
+class UpdateAccount extends React.Component {
 
     state = { redirection: false };
 
     constructor (props) {
         super(props)
-
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
         const userConnect = JSON.parse(localStorage.getItem('userConnect'));
 
         this.state = {
             userId: userConnect.userId,
             isAdmin: userConnect.userAdmin,
-            title: undefined || '',
-            content: undefined || '',
-            articleUrl: undefined || ''
+            firstname: userAccount.firstname,
+            lastname: userAccount.lastname,
+            bio: userAccount.bio || '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,26 +36,25 @@ class CreateArticle extends React.Component {
         e.preventDefault()
 
         const storage = JSON.parse(localStorage.getItem('userConnect'));
+        const userId = storage.userId
         let token = "Bearer " +  storage.token;
 
         const requestOptions = {
-            method: 'post',
+            method: 'put',
             headers: { 
-                'Content-Type': 'application/json',
-                'Authorization': token
+                "Content-type" : 'application/json',
+                'Authorization': token 
             },
             body: JSON.stringify(this.state)
         };
 
-        fetch(('http://localhost:8080/api/posts/'), requestOptions)
+        fetch(('http://localhost:8080/api/users/' + userId), requestOptions)
                 .then(response => response.json())
-                .then(
-                    (response) => {
+                .then((response) => {
                     if (response.error) { 
-                        alert("Votre post ne peut être publié : " + response.error); 
+                        alert("Votre compte n'a pas été modifié : " + response.error)
                     } else { 
                         this.setState({ redirection: true })
-                        alert("Votre post a été publié !")
                     }
                 })
                 .catch(error => {
@@ -66,24 +64,28 @@ class CreateArticle extends React.Component {
     }
 
     render() {
+        const userAccount = JSON.parse(localStorage.getItem('userAccount'));
+        const userId = userAccount.id;
+
         const { redirection } = this.state;
+
         if (redirection) {
-            return <Redirect to='/posts' />;
+            return <Redirect to={'/user/' + userId}/>;
         }
 
         return <React.Fragment>
             <div className={styles.container}>
-                <h1 className={styles.title}>Publier un post</h1>
+                <h1 className={styles.title}>Modifier votre profil</h1>
                 <form className={styles.form}>
-                    <FormField name="title" value={this.state.title} onChange={this.handleChange}>Titre</FormField>
-                    <Form.Group controlid="exampleForm.ControlTextarea1" className={styles.field}>
-                        <Form.Label>Contenu du post</Form.Label>
-                        <Form.Control as="textarea" rows={5} name="content" value={this.state.content} onChange={this.handleChange} />
+                    <FormField name="firstname" value={this.state.firstname} onChange={this.handleChange}>Prénom</FormField>
+                    <FormField name="lastname" value={this.state.lastname} onChange={this.handleChange}>Nom</FormField>
+                    <Form.Group className={styles.group} controlId="exampleForm.ControlTextarea1" >
+                        <Form.Label>Rédigez une bio</Form.Label>
+                        <Form.Control as="textarea" rows={5} name="bio" value={this.state.bio} onChange={this.handleChange} />
                     </Form.Group>
-                    <FormField name="articleUrl" value={this.state.articleUrl} onChange={this.handleChange}>URL d'un article (facultatif)</FormField>
                     <div className={styles.submit}>
-                        <button className={styles.btn} onClick={this.handleSubmit}>Publier</button>
-                        <Link to='/posts' className={styles.btn}>Retour</Link>
+                        <button className={styles.btn} onClick={this.handleSubmit}>Enregistrer</button>
+                        <Link to={'/user/' + userId} className={styles.btn}>Annuler</Link>
                     </div>
                 </form>
             </div>
@@ -91,4 +93,4 @@ class CreateArticle extends React.Component {
     };
 };
 
-export default CreateArticle;
+export default UpdateAccount;

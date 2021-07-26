@@ -1,0 +1,63 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    @include flex;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+    padding: 20px;
+
+    .title {
+        @include shadow;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .form {
+        @include shadow;
+        width: 100%;
+        padding: 40px;
+        border-radius: 5px;
+
+        :focus {
+            box-shadow: none !important;
+            border-color: $secondary-color !important;
+        }
+        .group {
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+
+            .btn {
+                @include btn;
+                max-width: 100px;
+                font-size: 1em;
+                margin: 0 20px;
+            }
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        .title {
+            font-size: 1.8em;
+        }
+
+        .form {
+            padding: 20px;
+        }
+    }
+}

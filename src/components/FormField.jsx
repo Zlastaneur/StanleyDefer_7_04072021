@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./CreatePost.module.scss"
+import styles from "./Posts/CreatePost.module.scss"
 
 
 const Form = ({name, type, value, onChange, children}) => {

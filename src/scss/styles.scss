@@ -33,3 +33,7 @@ img {
 #root {
     @include pushToBottom;
 }
+
+button:focus {
+    outline: none;
+}

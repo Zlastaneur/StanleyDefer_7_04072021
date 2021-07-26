@@ -79,7 +79,7 @@ const User = () => {
         return <div>Chargement...</div>;
     } else if (user.id === userId || user.isAdmin === true) {
         idUser = <div className={styles.userButton}>
-            <button className={styles.btn} onClick={() => {history.push("/userupdate/" + userId)}}>{modifyIcon}</button>
+            <button className={styles.btn} onClick={() => {history.push("/updateaccount/" + userId)}}>{modifyIcon}</button>
             <button className={styles.btn} onClick={() => {history.push("/userdelete/" + userId)}}>{deleteIcon}</button>
             <button className={styles.btn} onClick={handleOnclick}>{disconnectIcon}</button>  
         </div>

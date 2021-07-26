@@ -12,6 +12,7 @@ import User from './Users/User';
 import OtherUser from './Users/OtherUser';
 import CreatePost from './Posts/CreatePost';
 import UpdatePhoto from './Photo/UpdatePhoto';
+import UpdateAccount from './Users/UpdateAccount';
 
 const Routes = () => {
     const Auth = React.useContext(AuthContext)
@@ -26,6 +27,7 @@ const Routes = () => {
             <Route path="/users/:id" auth={Auth.auth} component={OtherUser} />
             <Route path="/createpost" auth={Auth.auth} component={CreatePost} />
             <Route path="/updatephoto/:id" auth={Auth.auth} component={UpdatePhoto} />
+            <Route path="/updateaccount/:id" auth={Auth.auth} component={UpdateAccount} />
         </Switch>
     )
 }

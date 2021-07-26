@@ -60,7 +60,7 @@ class UpdatePhoto extends React.Component {
                 <div className={styles.updatePhoto}>
                     <form className={styles.form} onSubmit={this.handleSubmit}>
                         <input className={styles.input} type="file" name="imageUrl" />
-                        <button className={styles.submit} type="Submit">Modifier</button>
+                        <button className={styles.submit} type="Submit">Enregister</button>
                     </form>
                     <div className={styles.cancel}>
                         <Link to={'/user/' + userId} className={styles.back}>Annuler</Link>
