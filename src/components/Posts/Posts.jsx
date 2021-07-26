@@ -51,10 +51,6 @@ const Posts = () => {
             )
         }, [token])
 
-           /* if (userId !== post.userId && user.imageUrl){
-                return <div></div>
-            }*/
-
     if (error) {
         return <div>Erreur : {error.message}</div>;
     } else if (!isLoaded) {
@@ -101,9 +97,9 @@ const Posts = () => {
                                 <Link to={"/post/" + post.id} key={"post" + post.id} className={styles.postTitle}>{post.title}</Link>
                                 <p className={styles.text} key={"content" + post.id}>{post.content}</p>
                                 {post.articleUrl ? <a className={styles.articleUrl} href={post.articleUrl}> {post.articleUrl}</a> : null }
-                            </div>
                             <div className={styles.timestamp}>
                                 <p key={post.createdAt} id={styles.createdAt}><Moment fromNow key={"date" + post.id}>{post.createdAt}</Moment></p>
+                            </div>
                             </div>
                         </div>
                     ))}

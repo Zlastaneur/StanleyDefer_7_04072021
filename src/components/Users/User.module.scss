@@ -6,7 +6,7 @@
     flex-direction: column;
     max-width: 1000px;
     width: 100%;
-    margin-top: 80px;
+    padding: 80px 40px;
 
     .userProfil {
         @include flex;
@@ -79,7 +79,7 @@
             }
 
             .bio {
-                color: grey;
+                color: $secondary-color;
             }
         }
     }
@@ -119,6 +119,67 @@
         .createdAt {
             display: flex;
             justify-content: flex-end;
+            font-size: 1em;
+            font-weight: 400;
+            color: $secondary-color;
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        padding: 80px 20px;
+
+        .userProfil {
+            .userButton {
+                justify-content: space-around;
+                font-size: 0.9em;
+                .btn {
+                    padding: 5px;
+                    margin-left: 0px;
+                }
+            }
+
+            .cover {
+                .img {
+                    width: 125px;
+                    height: 125px;
+                }
+
+                .btn {
+                    bottom: 0px;
+                    right: 5px;
+                }
+            }
+
+            .info {
+                text-align: center;
+                .name {
+                    font-size: 1.6em;
+                }
+            }
+        }
+
+        .postsTitle {
+            margin: 50px auto 0 auto;
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        .userPosts {
+            .content {
+                margin-bottom: 25px;
+                margin-top: 25px;
+            }
+
+            .createdAt {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 1em;
+                font-weight: 400;
+                color: $secondary-color;
+            }
         }
     }
 }

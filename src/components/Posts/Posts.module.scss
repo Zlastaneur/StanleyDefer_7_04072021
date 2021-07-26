@@ -2,7 +2,7 @@
 @import "../../scss/_variables.scss";
 
 .container {
-    color: black;
+    padding: 100px 40px;
 
     .title {
         @include flex;
@@ -11,7 +11,6 @@
         min-height: 100px;
         justify-content: center;
         align-items: center;
-        margin: 80px auto 20px auto;
         border-radius: 5px;
     }
 
@@ -21,7 +20,7 @@
         min-height: 50px;
         justify-content: flex-end;
         align-items: center;
-        margin: 0px auto 60px auto;
+        margin: 0px auto 30px auto;
         border-radius: 5px;
 
         .btn {
@@ -32,10 +31,10 @@
     .postCard {
         @include flex;
         @include shadow;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         max-width: 800px;
         max-height: 450px;
-        padding: 20px;
+        padding: 20px 30px;
         margin-bottom: 80px;
         border-radius: 5px;
 
@@ -43,8 +42,7 @@
             display: flex;
             align-items: center;
             flex-flow: column nowrap;
-            width: 100%;
-            max-width: 140px;
+            width: 140px;
             margin-right: 40px;
             text-align: center;
 
@@ -69,8 +67,10 @@
         }
 
         .content {
-            max-width: 580px;
-            padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
 
             .postTitle {
                 font-size: 1.5em;
@@ -84,7 +84,7 @@
 
             .articleUrl {
                 color: $primary-color;
-                margin-bottom: 20px;
+                margin-bottom: 40px;
             }
         }
 
@@ -93,10 +93,143 @@
             justify-content: flex-end;
             align-items: flex-end;
             width: 100%;
-            color: grey;
+            color: $secondary-color;
 
             #createdAt {
                 margin: 0px;
+            }
+        }
+    }
+}
+
+@include for-tablet {
+    .container {
+        .postCard {
+            flex-wrap: nowrap;
+            .user {
+                width: 100%;
+                max-width: 120px;
+                margin-right: 20px;
+                text-align: center;
+
+                h2 {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    max-width: 120px;
+                    font-size: 1.5em;
+                }
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-bottom: 20px;
+                }
+
+                .name {
+                    color: black;
+                }
+            }
+
+            .content {
+                .postTitle {
+                    font-size: 1.3em;
+                    font-weight: bolder;
+                }
+
+                .text {
+                    margin-top: 40px;
+                    margin-bottom: 30px;
+                }
+
+                .articleUrl {
+                    color: $primary-color;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        padding: 50px 20px;
+        .title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .newPost {
+            justify-content: center;
+            font-size: 1em;
+            margin-bottom: 50px;
+        }
+
+        .postCard {
+            flex-flow: column nowrap;
+            max-height: 700px;
+
+            .user {
+                flex-flow: row nowrap;
+                justify-content: space-around;
+                margin-right: 0px;
+                margin-bottom: 20px;
+                width: 100%;
+
+                h2 {
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 1.4em;
+                    width: 100%;
+                }
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    margin-bottom: 0px;
+                }
+
+                .name {
+                    display: flex;
+                    justify-content: flex-end;
+                    width: 100%;
+                    height: 50px;
+                    margin-bottom: 0px;
+                    text-align: end;
+                }
+            }
+
+            .content {
+                .postTitle {
+                    font-size: 1.3em;
+                }
+
+                .text {
+                    margin-top: 20px;
+                }
+
+                .articleUrl {
+                    color: $primary-color;
+                    margin-bottom: 30px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+            }
+
+            .timestamp {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                width: 100%;
+                color: $secondary-color;
+
+                #createdAt {
+                    margin: 0px;
+                }
             }
         }
     }

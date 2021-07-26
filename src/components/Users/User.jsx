@@ -127,7 +127,7 @@ const User = () => {
                         <div className={styles.userPosts} key={"user" + post.id}>
                             <Link to={"/post/" + post.id} key={"post" + post.id} className={styles.postTitle}>{post.title}</Link>
                             <p className={styles.content} key={"posts" + post.id}>{post.content}</p>
-                            <h3 className={styles.createdAt} key={"date" + post.id}>Publié le<Moment key={"date" + post.id} format="DD MMM YYYY" date={post.createdAt} /></h3>
+                            <h3 className={styles.createdAt} key={"date" + post.id}>Publié le&nbsp;<Moment key={"date" + post.id} format="DD MMM YYYY" date={post.createdAt} /></h3>
                         </div>
                     ))}
                 </div>

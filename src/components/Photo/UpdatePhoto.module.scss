@@ -7,6 +7,7 @@
     max-width: 1000px;
     width: 100%;
     align-items: center;
+    padding: 0 40px;
 
     .title {
         @include flex;
@@ -51,8 +52,31 @@
             display: flex;
             justify-content: flex-end;
         }
+    }
+}
 
-        .back {
+@include for-phone {
+    .container {
+        padding: 0 20px;
+
+        .title {
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .updatePhoto {
+            .form {
+                .input {
+                    color: white;
+                    text-align: center;
+                    max-width: 160px;
+                    padding: 5px 5px 5px 12px;
+                }
+            }
+            .cancel {
+                margin-top: 20px;
+                justify-content: center;
+            }
         }
     }
 }

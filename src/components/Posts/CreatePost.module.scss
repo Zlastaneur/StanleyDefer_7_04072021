@@ -26,7 +26,7 @@
 
         :focus {
             box-shadow: none !important;
-            border-color: grey !important;
+            border-color: $secondary-color !important;
         }
         .group {
             margin-bottom: 20px;
@@ -46,6 +46,14 @@
                 font-size: 1em;
                 margin: 0 20px;
             }
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        .title {
+            font-size: 1.8em;
         }
     }
 }
