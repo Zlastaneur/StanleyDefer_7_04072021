@@ -8,9 +8,9 @@ module.exports = (req, res, next) => {
         const userId = decodedToken.userId;
         const isAdmin = decodedToken.isAdmin;
         if (req.body.userId && req.body.userId !== userId) {
-            throw "User ID unavailable";
+            return res.status(401).json({ error: "User ID unavailable" });
         } else if (req.body.isAdmin && req.body.isAdmin !== isAdmin) {
-            throw "User role unavailable";
+            return res.status(401).json({ error: "User role unavailable" });
         } else {
             next();
         }

@@ -1,0 +1,27 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    @include flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    padding: 0px 20px;
+
+    h1 {
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .form {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+
+        .btn {
+            @include btn;
+            margin: 0px 10px;
+            text-align: center;
+        }
+    }
+}

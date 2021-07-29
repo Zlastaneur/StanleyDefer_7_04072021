@@ -28,9 +28,6 @@
             box-shadow: none !important;
             border-color: $secondary-color !important;
         }
-        .group {
-            margin-bottom: 20px;
-        }
 
         .field {
             margin-bottom: 20px;
@@ -39,6 +36,7 @@
         .submit {
             display: flex;
             justify-content: center;
+            margin-top: 30px;
 
             .btn {
                 @include btn;

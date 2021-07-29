@@ -92,7 +92,7 @@ class Signup extends React.Component {
                         alert("Erreur : " + response.error); 
                     } else { 
                         this.setState({ redirection: true })
-                        alert("Compte créé ! Veuillez vous connecter pour accéder à Groupomania")
+                        alert("Compte créé ! Connectez-vous pour accéder à Groupomania")
                     }
                 })
                 .catch(error => {

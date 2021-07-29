@@ -6,7 +6,7 @@ import AuthContext from '../AuthContext';
 import Cookies from 'js-cookie';
 import styles from "./User.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faSignOutAlt, faUserEdit, faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faSignOutAlt, faUserEdit, faCamera, faCrown, faUserTie } from '@fortawesome/free-solid-svg-icons'
 
 
 const User = () => {
@@ -15,6 +15,7 @@ const User = () => {
     const deleteIcon = <FontAwesomeIcon icon={faTrash} color="white"/>
     const disconnectIcon = <FontAwesomeIcon icon={faSignOutAlt} color="white"/>
     const modifyImgIcon = <FontAwesomeIcon icon={faCamera} color="white"/>
+    const crownIcon = <FontAwesomeIcon icon={faCrown}className={styles.crownIcon }/>
 
 
     const [error, setError] = useState(null);
@@ -88,9 +89,9 @@ const User = () => {
     return (
         <React.Fragment>
             <div className={styles.container}>
-                {storage.userAdmin === true ?
-                <p>Compte Administrateur</p> : <></>}
                 <div className={styles.userProfil}>
+                    {storage.userAdmin === true ?
+                    <div className={styles.admin}>{crownIcon}</div> : <></>}
                     {idUser}
                     <div className={styles.cover}>
                         <div className={styles.profilPicture}>

@@ -1,24 +1,29 @@
 const models = require("../models");
 const User = models.users;
 const Post = models.posts;
+const Comment = models.comments;
 const fs = require("fs");
 
 exports.deleteUser = (req, res, next) => {
-    Post.findAll({ where: { userId: req.params.id } })
-        .then((posts) => {
-            posts.forEach((post) => {
-                Post.destroy({ where: { userId: req.params.id } });
-            });
-        })
+    Comment.destroy({ where: { userId: req.params.id } })
         .then(() =>
-            User.findOne({ where: { id: req.params.id } }).then((user) => {
-                const filename = user.imageUrl;
-                fs.unlink(`images/${filename}`, () => {
-                    User.destroy({ where: { id: req.params.id } }).then(() =>
-                        res.status(200).json({ message: "User deleted" })
-                    );
-                });
-            })
+            Post.findAll({ where: { userId: req.params.id } })
+                .then((posts) => {
+                    posts.forEach((post) => {
+                        Comment.destroy({ where: { postId: post.id } });
+                        Post.destroy({ where: { id: post.id } });
+                    });
+                })
+                .then(() =>
+                    User.findOne({ where: { id: req.params.id } }).then((user) => {
+                        const filename = user.imageUrl;
+                        fs.unlink(`images/${filename}`, () => {
+                            User.destroy({ where: { id: req.params.id } }).then(() =>
+                                res.status(200).json({ message: "User deleted" })
+                            );
+                        });
+                    })
+                )
         )
         .catch((error) => res.status(400).json({ error }));
 };

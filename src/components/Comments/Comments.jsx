@@ -98,7 +98,6 @@ class Comments extends React.Component {
                 .then(response => response.json())
                 .then((comments) => 
                     this.setState({comments}),
-                    alert("Commentaire publié !")
                 )
                 .catch(error => {
                     this.setState({ Erreur: error.toString() });
@@ -152,7 +151,7 @@ class Comments extends React.Component {
                     </div>
                 </div>
                  {comments.map((comment) => (
-                        <div className={styles.comment} key={"divimg" + comment.id}>
+                        <div className={styles.comment} key={comment.id + "s"}>
                             {users.map((user) => {
                                 if (user.id === comment.userId && user.imageUrl) {
                                 return <Link to={"/users/" + user.id}><img className={styles.img} src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + comment.id} /></Link>

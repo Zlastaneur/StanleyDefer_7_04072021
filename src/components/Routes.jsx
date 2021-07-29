@@ -14,6 +14,13 @@ import CreatePost from './Posts/CreatePost';
 import UpdatePhoto from './Photo/UpdatePhoto';
 import UpdateAccount from './Users/UpdateAccount';
 import PostPage from './Posts/PostPage';
+import DeleteAccount from './Users/DeleteAccount';
+import AdminDeleteAccount from './Users/AdminDeleteAccount';
+import DeletePost from './Posts/DeletePost';
+import DeleteComment from './Comments/DeleteComment'; 
+import UpdatePost from './Posts/UpdatePost';
+
+
 
 const Routes = () => {
     const Auth = React.useContext(AuthContext)
@@ -25,11 +32,16 @@ const Routes = () => {
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/posts" auth={Auth.auth} component={Posts} />
             <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
+            <ProtectedRoute path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <Route path="/users/:id" auth={Auth.auth} component={OtherUser} />
             <Route path="/createpost" auth={Auth.auth} component={CreatePost} />
             <Route path="/updatephoto/:id" auth={Auth.auth} component={UpdatePhoto} />
             <Route path="/updateaccount/:id" auth={Auth.auth} component={UpdateAccount} />
             <Route path="/post/:id" auth={Auth.auth} component={PostPage} />
+            <Route path="/adminuserdelete/:id" auth={Auth.auth} component={AdminDeleteAccount} />
+            <Route path="/deletepost/:id" auth={Auth.auth} component={DeletePost} />
+            <Route path="/deletecomment/:id" auth={Auth.auth} component={DeleteComment} />
+            <Route path="/updatepost/:id" auth={Auth.auth} component={UpdatePost} />
         </Switch>
     )
 }

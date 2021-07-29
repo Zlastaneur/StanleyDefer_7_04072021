@@ -4,8 +4,8 @@ import Moment from 'react-moment';
 import Comments from "../Comments/Comments";
 import img from '../../images/icon.png';
 import styles from "./PostPage.module.scss"
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons'
 
 function PostPage ({ match }) {
     const [error, setError] = useState(null);
@@ -13,6 +13,11 @@ function PostPage ({ match }) {
     const [post, setPost] = useState([]);
     const [users, setUsers] = useState([]);
     const history = useHistory();
+
+    const deleteIcon = <FontAwesomeIcon icon={faTrash}/>
+    const editIcon = <FontAwesomeIcon icon={faEdit}/>
+
+
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     let token = "Bearer " +  storage.token;
@@ -63,13 +68,13 @@ function PostPage ({ match }) {
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else if (post.userId === storage.userId) {
-        userAuth = <div className="post-button">
-            <button className="btn btn-outline-info btn-sm" onClick={() => {history.push("/postupdate/" + postId)}}>Modifier</button>
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/postdelete/" + postId)}}>Supprimer</button>
+        userAuth = <div className={styles.buttons}>
+            <button className={styles.btn} onClick={() => {history.push("/updatepost/" + postId)}}>{editIcon}</button>
+            <button className={styles.btn} onClick={() => {history.push("/deletepost/" + postId)}}>{deleteIcon}</button>
         </div>
     } else if (storage.userAdmin === true){
-        userAuth = <div className="post-button">
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/postdelete/" + postId)}}>Supprimer</button>
+        userAuth = <div className={styles.buttons}>
+            <button className={styles.btn} onClick={() => {history.push("/deletepost/" + postId)}}>{deleteIcon}</button>
         </div>
     }
 
@@ -104,7 +109,7 @@ function PostPage ({ match }) {
                                         return null
                                     }
                                 })}
-
+                                {userAuth}
                             </div>
                             
                             <div className={styles.content} key={"show" + post.id}>

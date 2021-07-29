@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import Moment from 'react-moment';
 import img from '../../images/icon.png';
 import styles from './User.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash, faCrown} from '@fortawesome/free-solid-svg-icons'
 
 const OtherUser = ({match}) => {
     const [error, setError] = useState(null);
@@ -10,6 +12,10 @@ const OtherUser = ({match}) => {
     const [user, setUser] = useState([]);
     const [posts, setPost] = useState([]);
     const history = useHistory();
+
+    const deleteIcon = <FontAwesomeIcon icon={faTrash} color="white"/>
+    const crownIcon = <FontAwesomeIcon icon={faCrown}className={styles.crownIcon }/>
+
 
     const storage = JSON.parse(localStorage.getItem('userConnect'));
     const userId = match.params.id;
@@ -60,15 +66,20 @@ const OtherUser = ({match}) => {
     } else if (!isLoaded) {
         return <div>Chargement...</div>;
     } else if (storage.userAdmin === true) {
-        idUser = <div className="user-button">  
-            <button className="btn btn-outline-danger btn-sm" onClick={() => {history.push("/adminuserdelete/" + userId)}}>Supprimer</button>
+        idUser = <div className={styles.adminDelete}>  
+            <button className={styles.btn} onClick={() => {history.push("/adminuserdelete/" + userId)}}>{deleteIcon} Supprimer ce compte</button>
         </div>
-    } // admin
+    }
 
     return (
         <React.Fragment>
             <div className={styles.container}>
                 <div className={styles.userProfil}>
+                    {
+                    user.isAdmin === true ?
+                    <div className={styles.admin}>{crownIcon}</div> 
+                    : <></>
+                    }
                     <div className={styles.cover}>
                         <div className={styles.profilPicture}>
                             {user.imageUrl ?

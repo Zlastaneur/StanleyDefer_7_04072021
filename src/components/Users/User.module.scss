@@ -11,10 +11,40 @@
     .userProfil {
         @include flex;
         @include shadow;
+        position: relative;
         width: 100%;
         flex-direction: column;
         padding: 20px;
         border-radius: 5px;
+
+        .admin {
+            display: flex;
+            flex-flow: column nowrap;
+            position: absolute;
+            top: 25px;
+
+            .crownIcon {
+                font-size: 1.5em;
+                margin-left: 2.9px;
+                color: $primary-color;
+            }
+        }
+
+        .adminDelete {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            .btn {
+                @include btn;
+                font-size: 1em;
+                padding: 5px 10px;
+
+                svg {
+                    margin-right: 5px;
+                }
+            }
+        }
 
         .userButton {
             display: flex;
@@ -131,6 +161,22 @@
         padding: 80px 20px;
 
         .userProfil {
+            .admin {
+                top: -30px;
+
+                .crownIcon {
+                    font-size: 1.5em;
+                    margin-left: 2.9px;
+                    color: $primary-color;
+                }
+            }
+
+            .adminDelete {
+                margin-top: 20px;
+                justify-content: center;
+                font-size: 0.8em;
+            }
+
             .userButton {
                 justify-content: space-around;
                 font-size: 0.9em;
@@ -179,6 +225,18 @@
                 font-size: 1em;
                 font-weight: 400;
                 color: $secondary-color;
+            }
+        }
+    }
+}
+
+@include for-tablet {
+    .container {
+        .userProfil {
+            .adminDelete {
+                margin-top: 20px;
+                justify-content: center;
+                font-size: 1em;
             }
         }
     }

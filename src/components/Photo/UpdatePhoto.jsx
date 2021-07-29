@@ -37,7 +37,7 @@ class UpdatePhoto extends React.Component {
         .then((res) => { 
             this.setState({ redirect: true })
             if (res.ok) { 
-            alert("Votre photo à été modifiée !"); 
+            console.log("Votre photo à été modifiée !"); 
             } else if (res.status === 401) { 
                 alert("Une erreur s'est produite ! "); 
             } 
