@@ -1,0 +1,166 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .newComment {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 80px;
+
+        .picture {
+            width: 10%;
+            text-align: center;
+
+            .newPostImg {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+        .form {
+            width: 75%;
+            margin: 0;
+            max-height: 300px;
+
+            textarea {
+                max-height: 300px;
+            }
+
+            :focus {
+                box-shadow: none !important;
+                border-color: $secondary-color !important;
+            }
+            .group {
+                margin-bottom: 20px;
+            }
+
+            .field {
+                margin-bottom: 20px;
+            }
+        }
+        .submit {
+            display: flex;
+            justify-content: flex-end;
+            width: 15%;
+
+            .btn {
+                @include btn;
+                max-width: 85px;
+                font-size: 1em;
+                margin: 0px;
+                padding: 10px 15px;
+            }
+        }
+    }
+
+    .comment {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 40px;
+
+        .img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            @include shadow;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 30px;
+            width: 90%;
+            padding: 20px 30px;
+            justify-content: flex-end;
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .userLink {
+                    font-size: 1.2em;
+                    font-weight: bold;
+                }
+
+                .delete {
+                    text-align: end;
+
+                    .deleteBtn {
+                        svg {
+                            color: $primary-color;
+                        }
+                    }
+                }
+            }
+
+            .content {
+                width: 100%;
+                margin: 10px 0 0 10px;
+            }
+        }
+        .timeStamp {
+            margin-top: 10px;
+            width: 100%;
+            text-align: end;
+            margin: 10px 10px 0 0;
+            font-size: 0.9em;
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        .newComment {
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+
+            .picture {
+                width: auto;
+            }
+
+            .form {
+                margin-left: 15px;
+                max-width: 100%;
+            }
+
+            .submit {
+                margin-top: 10px;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        .comment {
+            position: relative;
+            margin-bottom: 60px;
+            .card {
+                margin-left: 10px;
+            }
+
+            .img {
+                margin: 0px;
+                position: absolute;
+                left: 15px;
+                top: -25px;
+            }
+        }
+    }
+}

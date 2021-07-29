@@ -2,40 +2,24 @@
 @import "../../scss/_variables.scss";
 
 .container {
-    padding: 100px 40px;
+    @include flex;
+    flex-wrap: wrap;
+    max-width: 880px;
+    margin: 100px auto;
+    padding: 0 40px;
 
     .title {
-        @include flex;
-        @include shadow;
-        max-width: 1200px;
-        min-height: 100px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
-    }
-
-    .newPost {
-        display: flex;
-        max-width: 1200px;
-        min-height: 50px;
-        justify-content: flex-end;
-        align-items: center;
-        margin: 0px auto 30px auto;
-        border-radius: 5px;
-
-        .btn {
-            @include btn;
-        }
+        width: 100%;
     }
 
     .postCard {
-        @include flex;
         @include shadow;
+        display: flex;
         flex-wrap: nowrap;
-        max-width: 800px;
+        width: 100%;
         max-height: 450px;
         padding: 20px 30px;
-        margin-bottom: 80px;
+        margin-bottom: 30px;
         border-radius: 5px;
 
         .user {
@@ -103,60 +87,11 @@
     }
 }
 
-@include for-tablet {
-    .container {
-        .postCard {
-            flex-wrap: nowrap;
-            .user {
-                width: 100%;
-                max-width: 120px;
-                margin-right: 20px;
-                text-align: center;
-
-                h2 {
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    max-width: 120px;
-                    font-size: 1.5em;
-                }
-
-                img {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    margin-bottom: 20px;
-                }
-
-                .name {
-                    color: black;
-                }
-            }
-
-            .content {
-                .postTitle {
-                    font-size: 1.3em;
-                    font-weight: bolder;
-                }
-
-                .text {
-                    margin-top: 40px;
-                    margin-bottom: 30px;
-                }
-
-                .articleUrl {
-                    color: $primary-color;
-                    margin-bottom: 40px;
-                }
-            }
-        }
-    }
-}
-
 @include for-phone {
     .container {
-        padding: 50px 20px;
+        margin: 50px auto;
+        padding: 0px 20px;
+
         .title {
             text-align: center;
             font-size: 2em;

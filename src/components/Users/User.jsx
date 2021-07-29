@@ -125,9 +125,11 @@ const User = () => {
                     
                     {posts.map((post) => (
                         <div className={styles.userPosts} key={"user" + post.id}>
-                            <Link to={"/post/" + post.id} key={"post" + post.id} className={styles.postTitle}>{post.title}</Link>
+                            <Link to={"/post/" + post.id} key={"postt" + post.id}>
+                            <h3 key={"post" + post.id} className={styles.postTitle}>{post.title}</h3>
                             <p className={styles.content} key={"posts" + post.id}>{post.content}</p>
                             <h3 className={styles.createdAt} key={"date" + post.id}>Publié le&nbsp;<Moment key={"date" + post.id} format="DD MMM YYYY" date={post.createdAt} /></h3>
+                            </Link>
                         </div>
                     ))}
                 </div>

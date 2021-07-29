@@ -13,6 +13,7 @@ import OtherUser from './Users/OtherUser';
 import CreatePost from './Posts/CreatePost';
 import UpdatePhoto from './Photo/UpdatePhoto';
 import UpdateAccount from './Users/UpdateAccount';
+import PostPage from './Posts/PostPage';
 
 const Routes = () => {
     const Auth = React.useContext(AuthContext)
@@ -28,6 +29,7 @@ const Routes = () => {
             <Route path="/createpost" auth={Auth.auth} component={CreatePost} />
             <Route path="/updatephoto/:id" auth={Auth.auth} component={UpdatePhoto} />
             <Route path="/updateaccount/:id" auth={Auth.auth} component={UpdateAccount} />
+            <Route path="/post/:id" auth={Auth.auth} component={PostPage} />
         </Switch>
     )
 }
