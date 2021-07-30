@@ -6,7 +6,7 @@ import AuthContext from '../AuthContext';
 import Cookies from 'js-cookie';
 import styles from "./User.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faSignOutAlt, faUserEdit, faCamera, faCrown, faUserTie } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faSignOutAlt, faUserEdit, faCamera, faCrown} from '@fortawesome/free-solid-svg-icons'
 
 
 const User = () => {

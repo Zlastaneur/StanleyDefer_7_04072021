@@ -13,9 +13,9 @@ const Header = () => {
  
     const signupIcon = <FontAwesomeIcon icon={faUserPlus} size="2x" color="white"/>
     const loginIcon = <FontAwesomeIcon icon={faSignInAlt} size="2x" color="white"/>
-    const postsIcon = <FontAwesomeIcon icon={faHome} size="2x" color="white"/>
-    const employeeIcon = <FontAwesomeIcon icon={faUserFriends} size="2x" color="white"/>
-    const profilIcon = <FontAwesomeIcon icon={faUserCircle} size="2x" color="white"/>
+    const postsIcon = <FontAwesomeIcon icon={faHome} size="2x" color="white" className={styles.homeIcon}/>
+    const employeeIcon = <FontAwesomeIcon icon={faUserFriends} className={styles.icon} color="white"/>
+    const profilIcon = <FontAwesomeIcon icon={faUserCircle} className={styles.icon} color="white"/>
 
 
     //const [auth, setAuth] = React.useState(false);
@@ -44,6 +44,7 @@ const Header = () => {
 
       navLink = 
         <nav className={styles.nav}>
+            <Link to={"/allusers/" } className={styles.allUsers}>{employeeIcon}</Link>
             <Link to="/posts" className={styles.posts}>{postsIcon}</Link>
             <Link to={"/user/" + userId } className={styles.user}>{profilIcon}</Link>
         </nav>
@@ -61,7 +62,7 @@ const Header = () => {
   } else {
 
     navLink = 
-        <nav className={styles.nav}>
+        <nav className={styles.navs}>
             <Link to="/signup" className={styles.signup}>{signupIcon}</Link>
             <Link to="/login" className={styles.login}>{loginIcon}</Link>
         </nav>

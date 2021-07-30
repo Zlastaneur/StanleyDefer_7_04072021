@@ -19,6 +19,7 @@ import AdminDeleteAccount from './Users/AdminDeleteAccount';
 import DeletePost from './Posts/DeletePost';
 import DeleteComment from './Comments/DeleteComment'; 
 import UpdatePost from './Posts/UpdatePost';
+import AllUsers from './Users/AllUsers';
 
 
 
@@ -31,6 +32,7 @@ const Routes = () => {
             <ProtectedLogin path="/signup" component={Signup} />
             <ProtectedLogin path="/login" component={Login} auth={Auth.auth} />
             <ProtectedRoute path="/posts" auth={Auth.auth} component={Posts} />
+            <ProtectedRoute path="/allusers" auth={Auth.auth} component={AllUsers} />
             <ProtectedRoute path="/user/:id" auth={Auth.auth} component={User} />
             <ProtectedRoute path="/userdelete/:id" auth={Auth.auth} component={DeleteAccount} />
             <Route path="/users/:id" auth={Auth.auth} component={OtherUser} />

@@ -85,9 +85,9 @@ const Posts = () => {
 
                                 {users.map((user) => {
                                     if(user.id === post.userId && user.id === userId){
-                                        return <Link to={"/user/" + user.id}><h2 key={"h2" +user.id} className={styles.name}>{user.firstname}<br></br>{user.lastname}</h2></Link>
+                                        return <Link to={"/user/" + user.id} key={"user" +user.id}><h2 key={"h2" +user.id} className={styles.name}>{user.firstname}<br></br>{user.lastname}</h2></Link>
                                     } else if(user.id === post.userId && user.id !== userId){
-                                        return <Link to={"/users/" + user.id}><h2 key={"h2" +user.id} className={styles.name}>{user.firstname}<br></br>{user.lastname}</h2></Link>
+                                        return <Link to={"/users/" + user.id} key={"users" +user.id}><h2 key={"h2" +user.id} className={styles.name}>{user.firstname}<br></br>{user.lastname}</h2></Link>
                                     } else {
                                         return null
                                     }

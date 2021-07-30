@@ -6,6 +6,9 @@ const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/post");
 const commentRoutes = require("./routes/comment");
 
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+
 const app = express();
 
 require("dotenv").config();
@@ -31,5 +34,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/comments", commentRoutes);
 
 app.use("/images", express.static(path.join(__dirname, "images")));
+
+app.use(helmet());
+app.use(rateLimit());
 
 module.exports = app;

@@ -154,18 +154,18 @@ class Comments extends React.Component {
                         <div className={styles.comment} key={comment.id + "s"}>
                             {users.map((user) => {
                                 if (user.id === comment.userId && user.imageUrl) {
-                                return <Link to={"/users/" + user.id}><img className={styles.img} src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + comment.id} /></Link>
+                                return <Link to={"/users/" + user.id} key={user.id + comment.userId}><img className={styles.img} src={"http://localhost:8080/images/" + user.imageUrl} alt="user" key={"userImage" + comment.id} /></Link>
                                 } else if (user.id === comment.userId && !user.imageUrl) {
-                                    return <Link to={"/users/" + user.id}><img className={styles.img} src={img} alt="user" key={"userImages" + comment.id} /></Link>
+                                    return <Link to={"/users/" + user.id} key={user.id + comment.userId}><img className={styles.img} src={img} alt="user" key={"userImages" + comment.id} /></Link>
                                 } else {
                                     return null
                                 }
                             })}
                             <div className={styles.card} key={"fragment" + comment.id}>
-                                <div className={styles.header}>       
+                                <div className={styles.header} key={comment.userId + "header"} >       
                                 {users.map((user) => {
                                     if(comment.userId === user.id && comment.userId !== userId){
-                                    return <Link to={"/users/" + user.id} key={comment.id + user.id} className={styles.userLink}>{user.firstname} {user.lastname}</Link>
+                                    return <Link to={"/users/" + user.id} key={comment.id + user.id + "card"} className={styles.userLink}>{user.firstname} {user.lastname}</Link>
                                     } else if (comment.userId === user.id && comment.userId === userId){
                                         return <Link to={"/user/" + user.id} key={comment.id + user.id +"key"} className={styles.userLink}>{user.firstname} {user.lastname}</Link>
                                     }else {
@@ -173,7 +173,7 @@ class Comments extends React.Component {
                                     }
                                 })}
                                 {comment.userId === userConnect.userId || userConnect.userAdmin === true
-                                    ? <div className={styles.delete}>
+                                    ? <div className={styles.delete} key={comment.userId + "deletes"} >
                                         <Link to={"/deletecomment/" + comment.id} key={"delete"+ comment.id} className={styles.deleteBtn}>{deleteIcon}</Link>
                                     </div> : null
                                 }

@@ -1,0 +1,80 @@
+@import "../../scss/_mixins.scss";
+@import "../../scss/_variables.scss";
+
+.container {
+    @include flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 100px 40px;
+    justify-content: center;
+
+    .title {
+        @include flex;
+        @include shadow;
+        max-width: 1200px;
+        width: 100%;
+        min-height: 100px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        margin-bottom: 40px;
+    }
+
+    .user {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        max-width: 1000px;
+
+        .card {
+            margin: 50px 50px;
+            text-align: center;
+
+            .photo {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin-bottom: 10px;
+                border: 2px solid $primary-color;
+            }
+
+            .name {
+                border-radius: 10px;
+                background-color: $primary-color;
+                color: white;
+                text-align: center;
+                padding: 3px 5px;
+            }
+        }
+    }
+}
+
+@include for-phone {
+    .container {
+        padding: 100px 20px;
+
+        .title {
+            font-size: 2em;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .user {
+            justify-content: space-around;
+            .card {
+                margin: 30px 0px;
+
+                .photo {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-bottom: 10px;
+                    border: 2px solid $primary-color;
+                }
+            }
+        }
+    }
+}

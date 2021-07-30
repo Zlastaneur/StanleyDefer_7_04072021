@@ -31,8 +31,31 @@
 .nav {
     display: flex;
     justify-content: space-between;
+    width: 180px;
+    align-items: flex-end;
+
+    .homeIcon {
+        font-size: 2.5em;
+    }
+
+    .icon {
+        font-size: 1.8em;
+    }
+}
+
+.navs {
+    display: flex;
+    justify-content: space-between;
     width: 120px;
-    align-items: center;
+    align-items: flex-end;
+
+    .homeIcon {
+        font-size: 2.5em;
+    }
+
+    .icon {
+        font-size: 1.8em;
+    }
 }
 
 @include for-tablet {
@@ -62,6 +85,10 @@
         }
 
         .nav {
+            width: 140px;
+        }
+
+        .navs {
             width: 100px;
         }
     }
